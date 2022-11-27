@@ -1468,13 +1468,11 @@ class time:
                 raise TypeError("cannot compare naive and aware times")
 
         mydelta = timedelta(
-            seconds=self._hour * 3600 + self._minute * 60 + self._second,
-            microseconds=self._microsecond
-            ) - myoff
+            hours=self._hour, minutes=self._minute, seconds=self._second,
+            microseconds=self._microsecond) - myoff
         otdelta = timedelta(
-            seconds=other._hour * 3600 + other._minute * 60 + other._second,
-            microseconds=other._microsecond
-            ) - otoff
+            hours=other._hour, minutes=other._minute, seconds=other._second,
+            microseconds=other._microsecond) - otoff
         return _cmp(mydelta, otdelta)
 
     def __hash__(self):
